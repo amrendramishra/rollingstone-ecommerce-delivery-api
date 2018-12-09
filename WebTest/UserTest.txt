@@ -1,23 +1,37 @@
-How to test the User REST API
+How to test the Delivery REST API
 
-1. Get All User With
+1. Get All Delivery With
 
 METHOD:  GET
-URL: http://localhost:9090/rscommerce/pdp-service/account/user
+URL: http://localhost:9098/rscommerce/pdp-service/account/delivery
 
 Results
 
 {  
    "content":[  
       {  
+         "id":4,
+         "offerId":1002,
+         "productId":1002,
+         "availableDate":"2018-02-11",
+         "daysInTransit":10,
+         "deliveryCharge":49.0,
+         "haulAwayMessage":"Will Haul Away Old Appliances",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeForMembers":true
+      },
+      {  
          "id":1,
-         "userName":"bdatta",
-         "firstName":"Binit",
-         "lastName":"Datta",
-         "sex":"M",
-         "memberType":"G",
-         "accountNumber":"10001",
-         "registrationDate":"2015-01-01"
+         "offerId":1001,
+         "productId":1001,
+         "availableDate":"2018-01-12",
+         "daysInTransit":12,
+         "deliveryCharge":39.0,
+         "haulAwayMessage":"Will Haul Away Old Appliances",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeForMembers":true
       }
    ],
    "pageable":{  
@@ -28,78 +42,8 @@ Results
       "offset":0,
       "pageSize":20,
       "pageNumber":0,
-      "unpaged":false,
-      "paged":true
-   },
-   "last":true,
-   "totalPages":1,
-   "totalElements":1,
-   "size":20,
-   "number":0,
-   "first":true,
-   "numberOfElements":1,
-   "sort":{  
-      "sorted":true,
-      "unsorted":false
-   }
-}
-
-2. Create a New User With
-
-METHOD: POST
-URL: http://localhost:9090/rscommerce/pdp-service/account/user
-BODY:
-
-{
-  "userName": "jblackburn",
-  "firstName": "Jessica",
-  "lastName": "Blackburn",
-  "sex": "F",
-  "memberType": "G",
-  "accountNumber": "10004",
-  "registrationDate": "2015-01-02"
-}
-
-3. Verify New User Creation with
-
-METHOD:  GET
-URL: http://localhost:9090/rscommerce/pdp-service/account/user
-
-Results
-
-{  
-   "content":[  
-      {  
-         "id":3,
-         "userName":"jblackburn",
-         "firstName":"Jessica",
-         "lastName":"Blackburn",
-         "sex":"M",
-         "memberType":"G",
-         "accountNumber":"10004",
-         "registrationDate":"2015-01-01"
-      },
-      {  
-         "id":1,
-         "userName":"bdatta",
-         "firstName":"Binit",
-         "lastName":"Datta",
-         "sex":"M",
-         "memberType":"G",
-         "accountNumber":"10001",
-         "registrationDate":"2015-01-01"
-      }
-   ],
-   "pageable":{  
-      "sort":{  
-         "sorted":true,
-         "unsorted":false
-      },
-      "offset":0,
-      "pageSize":20,
-      "pageNumber":0,
-      "unpaged":false,
-      "paged":true
+      "paged":true,
+      "unpaged":false
    },
    "last":true,
    "totalPages":1,
@@ -114,43 +58,117 @@ Results
    }
 }
 
-4. Update an existing user with
+2. Create a New Delivery With
+
+METHOD: POST
+URL: http://localhost:9098/rscommerce/pdp-service/account/delivery
+BODY:
+
+{
+  "offerId": 1003,
+  "productId": 1003,
+  "availableDate": "2018-02-12",
+  "daysInTransit": 10,
+  "deliveryCharge": 69,
+  "haulAwayMessage": "Will Haul Away Old Appliances",
+  "hasSpecialOffers": true,
+  "available": true,
+  "freeForMembers": true
+}
+
+3. Verify New Delivery Creation with
+
+METHOD:  GET
+URL: http://localhost:9098/rscommerce/pdp-service/account/delivery
+
+Results
+
+{  
+   "content":[  
+      {  
+         "id":5,
+         "offerId":1003,
+         "productId":1003,
+         "availableDate":"2018-02-11",
+         "daysInTransit":10,
+         "deliveryCharge":69.0,
+         "haulAwayMessage":"Will Haul Away Old Appliances",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeForMembers":true
+      },
+      {  
+         "id":4,
+         "offerId":1002,
+         "productId":1002,
+         "availableDate":"2018-02-11",
+         "daysInTransit":10,
+         "deliveryCharge":49.0,
+         "haulAwayMessage":"Will Haul Away Old Appliances",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeForMembers":true
+      },
+      {  
+         "id":1,
+         "offerId":1001,
+         "productId":1001,
+         "availableDate":"2018-01-12",
+         "daysInTransit":12,
+         "deliveryCharge":39.0,
+         "haulAwayMessage":"Will Haul Away Old Appliances",
+         "hasSpecialOffers":true,
+         "available":true,
+         "freeForMembers":true
+      }
+   ],
+   "pageable":{  
+      "sort":{  
+         "sorted":true,
+         "unsorted":false
+      },
+      "offset":0,
+      "pageSize":20,
+      "pageNumber":0,
+      "paged":true,
+      "unpaged":false
+   },
+   "last":true,
+   "totalPages":1,
+   "totalElements":3,
+   "size":20,
+   "number":0,
+   "first":true,
+   "numberOfElements":3,
+   "sort":{  
+      "sorted":true,
+      "unsorted":false
+   }
+}
+
+4. Update an existing delivery with
 
 METHOD: PUT
-URL: http://localhost:9090/rscommerce/pdp-service/account/user/3
+URL: http://localhost:9098/rscommerce/pdp-service/account/delivery/5
 
 BODY:
 
 {
-  "id":3,
-  "userName": "jblackburn",
-  "firstName": "Jessica",
-  "lastName": "Blackburn",
-  "sex": "M",
-  "memberType": "G",
-  "accountNumber": "10005",
-  "registrationDate": "2015-01-02"
+  "id":5,
+  "offerId": 1003,
+  "productId": 1003,
+  "availableDate": "2018-02-12",
+  "daysInTransit": 10,
+  "deliveryCharge": 29,
+  "haulAwayMessage": "Will Haul Away Old Appliances",
+  "hasSpecialOffers": true,
+  "available": true,
+  "freeForMembers": true
 }
 
-5. Verify New User Creation with
-
-METHOD:  GET
-URL: http://localhost:9090/rscommerce/pdp-service/account/user/3
-
-{  
-   "id":3,
-   "userName":"jblackburn",
-   "firstName":"Jessica",
-   "lastName":"Blackburn",
-   "sex":"M",
-   "memberType":"G",
-   "accountNumber":"10005",
-   "registrationDate":"2015-01-01"
-}
-
-6. Delete the user with id 3 
+5. Delete the delivery with id 5 
 
 METHOD: DELETE
-URL: http://localhost:9090/rscommerce/pdp-service/account/user/3
+URL: http://localhost:9098/rscommerce/pdp-service/account/delivery/5
 
 
